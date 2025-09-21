@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Modification Recommender</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .upload-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .file-input {
+            margin: 20px 0;
+        }
+        .submit-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+        .submit-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .results {
+            margin-top: 30px;
+            display: none;
+        }
+        .car-info {
+            background-color: #e9ecef;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .modifications {
+            background-color: #d4edda;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .modification-item {
+            background-color: white;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 3px;
+            border-left: 4px solid #28a745;
+        }
+        .loading {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .confidence-bar {
+            background-color: #ddd;
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        .confidence-fill {
+            height: 100%;
+            background-color: #28a745;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚗 Car Modification Recommender</h1>
+        
+        <div class="upload-section">
+            <h3>Upload a car image to get modification recommendations</h3>
+            <form id="uploadForm" enctype="multipart/form-data">
+                <div class="file-input">
+                    <input type="file" id="imageFile" name="image" accept="image/*" required>
+                </div>
+                <button type="submit" class="submit-btn" id="submitBtn">Analyze Car & Get Recommendations</button>
+            </form>
+        </div>
+
+        <div id="loading" class="loading" style="display: none;">
+            Analyzing car image and generating recommendations...
+        </div>
+
+        <div id="error" class="error" style="display: none;"></div>
+
+        <div id="results" class="results">
+            <div class="car-info">
+                <h3>🚙 Car Prediction</h3>
+                <p><strong>Make:</strong> <span id="carMake"></span></p>
+                <p><strong>Model:</strong> <span id="carModel"></span></p>
+                <p><strong>Variant:</strong> <span id="carVariant"></span></p>
+                <p><strong>Full Label:</strong> <span id="carFullLabel"></span></p>
+                <p><strong>Confidence:</strong> <span id="carConfidence"></span></p>
+                <div class="confidence-bar">
+                    <div class="confidence-fill" id="confidenceBar"></div>
+                </div>
+            </div>
+
+            <div class="modifications">
+                <h3>🔧 Recommended Modifications</h3>
+                <div id="modificationsList"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const fileInput = document.getElementById('imageFile');
+            const submitBtn = document.getElementById('submitBtn');
+            const loading = document.getElementById('loading');
+            const results = document.getElementById('results');
+            const error = document.getElementById('error');
+            
+            if (!fileInput.files[0]) {
+                alert('Please select an image file');
+                return;
+            }
+            
+            // Show loading, hide results and error
+            loading.style.display = 'block';
+            results.style.display = 'none';
+            error.style.display = 'none';
+            submitBtn.disabled = true;
+            
+            const formData = new FormData();
+            formData.append('image', fileInput.files[0]);
+            
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    // Display results
+                    document.getElementById('carMake').textContent = data.car_prediction.make;
+                    document.getElementById('carModel').textContent = data.car_prediction.model;
+                    document.getElementById('carVariant').textContent = data.car_prediction.variant;
+                    document.getElementById('carFullLabel').textContent = data.car_prediction.full_label;
+                    document.getElementById('carConfidence').textContent = `${(data.car_prediction.confidence * 100).toFixed(1)}%`;
+                    
+                    // Update confidence bar
+                    const confidencePercent = data.car_prediction.confidence * 100;
+                    document.getElementById('confidenceBar').style.width = `${confidencePercent}%`;
+                    
+                    // Display modifications
+                    const modsList = document.getElementById('modificationsList');
+                    modsList.innerHTML = '';
+                    
+                    if (data.modifications && data.modifications.length > 0) {
+                        data.modifications.forEach(mod => {
+                            const modItem = document.createElement('div');
+                            modItem.className = 'modification-item';
+                            modItem.textContent = mod;
+                            modsList.appendChild(modItem);
+                        });
+                    } else {
+                        modsList.innerHTML = '<p>No modifications found for this car.</p>';
+                    }
+                    
+                    results.style.display = 'block';
+                } else {
+                    // Display error
+                    error.textContent = data.error || 'An error occurred while processing the image';
+                    error.style.display = 'block';
+                }
+            } catch (err) {
+                error.textContent = 'Network error: ' + err.message;
+                error.style.display = 'block';
+            } finally {
+                loading.style.display = 'none';
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>

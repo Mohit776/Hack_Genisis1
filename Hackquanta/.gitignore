@@ -1,0 +1,33 @@
+# Ignore Anaconda and virtual environments
+anaconda_projects/
+venv/
+*.ipynb_checkpoints/
+
+# Ignore Python bytecode and cache
+__pycache__/
+*.pyc
+
+# Ignore model and data files
+*.pkl
+*.h5
+*.csv
+
+# Ignore IDE/project files
+*.vscode/
+*.idea/
+
+# Ignore test output or miscellaneous files
+*.log
+*.tmp
+*.muster
+
+# Ignore images and large files uploaded locally
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.gif
+
+# General README or requirements usually tracked, so not ignored
+#README.md
+#requirements.txt
