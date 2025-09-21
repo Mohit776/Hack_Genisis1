@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "user_name": "John Doe",
+    "heading": "Engine Oil Change Tips",
+    "description": "A guide on when and how to change your car’s engine oil for better performance.",
+    "time": "2 hours ago",
+    "likes": 15,
+    "comments": 6
+  },
+  {
+    "id": 2,
+    "user_name": "Jane Smith",
+    "heading": "Top 5 Car Cleaning Hacks",
+    "description": "Simple tricks to keep your car’s interior spotless using household items.",
+    "time": "6 hours ago",
+    "likes": 22,
+    "comments": 9
+  },
+  {
+    "id": 3,
+    "user_name": "Mike Johnson",
+    "heading": "Garage Storage Ideas",
+    "description": "Smart ways to organize tools and spare parts in your garage.",
+    "time": "10 hours ago",
+    "likes": 18,
+    "comments": 5
+  },
+  {
+    "id": 4,
+    "user_name": "Sophia Lee",
+    "heading": "Brake Pad Replacement Guide",
+    "description": "Step-by-step instructions to know when and how to replace brake pads.",
+    "time": "1 day ago",
+    "likes": 30,
+    "comments": 12
+  },
+  {
+    "id": 5,
+    "user_name": "David Kim",
+    "heading": "Best Tires for Long Drives",
+    "description": "A comparison of durable tire brands for road trips and long journeys.",
+    "time": "2 days ago",
+    "likes": 25,
+    "comments": 11
+  },
+  {
+    "id": 6,
+    "user_name": "Emma Wilson",
+    "heading": "Car Battery Maintenance",
+    "description": "Tips to extend your car battery’s life and avoid sudden breakdowns.",
+    "time": "3 days ago",
+    "likes": 28,
+    "comments": 14
+  },
+  {
+    "id": 7,
+    "user_name": "Robert Brown",
+    "heading": "DIY Car Detailing",
+    "description": "How to detail your car at home and save on expensive services.",
+    "time": "4 days ago",
+    "likes": 32,
+    "comments": 17
+  },
+  {
+    "id": 8,
+    "user_name": "Alice Johnson",
+    "heading": "Winter Car Care Checklist",
+    "description": "Essential maintenance steps to prepare your car for cold weather.",
+    "time": "5 days ago",
+    "likes": 40,
+    "comments": 20
+  }
+]

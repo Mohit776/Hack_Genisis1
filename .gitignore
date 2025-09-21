@@ -1,0 +1,8 @@
+/CLIENT/node_modules
+/HACKQUANTA/venv
+__pycache__/
+*.pyc
+.DS_Store
+.env
+*.h5   
+Hackquanta
