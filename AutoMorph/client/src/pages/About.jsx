@@ -80,7 +80,7 @@ const About = () => {
             title: "CEO & Founder",
             handle: "mayankmittal1311",
             status: "Online",
-            avatarUrl: "/team/alex.jpg",
+            avatarUrl: "/public/background/",
             // expertise: "AI & Automotive Tech"
             expertise: "Everything"
         },
@@ -89,7 +89,7 @@ const About = () => {
             title: "Lead Designer",
             handle: "mohitaggarwal",
             status: "Online",
-            avatarUrl: "/team/maya.jpg",
+            avatarUrl: "/public/background/Mohit.png",
             expertise: "UX/UI & 3D Visualization"
         },
         {
@@ -97,7 +97,7 @@ const About = () => {
             title: "Software Engineer",
             handle: "yashChopra",
             status: "Online",
-            avatarUrl: "/team/javi.jpg",
+            avatarUrl: "/public/background/yash.jpg",
             expertise: "Full Stack Development"
         },
         {
@@ -105,7 +105,7 @@ const About = () => {
             title: "Product Manager",
             handle: "raghavbhardwaj",
             status: "Away",
-            avatarUrl: "/team/sarah.jpg",
+            avatarUrl: "/public/background/Raghav.jpg",
             expertise: "Automotive Industry"
         }
     ];

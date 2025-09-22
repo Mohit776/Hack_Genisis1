@@ -7,8 +7,13 @@ import {
 } from "lucide-react";
 import electricCar from "../assets/assets/electric-car.jpg";
 import profileAvatar from "../assets/assets/profile-avatar.png";
+import { useAuth0 } from "@auth0/auth0-react";
+
 
 const Profile = () => {
+
+   const { user, isAuthenticated, isLoading, logout ,} = useAuth0();
+
   const healthItems = [
     { name: "Battery", icon: Battery, status: "excellent", value: "92%", color: "text-green-400" },
     { name: "Engine", icon: Settings, status: "good", value: "87%", color: "text-blue-400" },
@@ -141,11 +146,11 @@ const Profile = () => {
         </motion.div>
 
         <div className="text-center space-y-3 flex-1">
-          <h2 className="text-2xl font-bold text-white">Alex Rivera</h2>
+          <h2 className="text-2xl font-bold text-white">{user.name}</h2>
           <div className="space-y-2 text-gray-400">
             <div className="flex items-center justify-center gap-2">
               <Mail className="w-4 h-4" />
-              <span>alex.rivera@automorph.com</span>
+              <span>{user.email}</span>
             </div>
             <div className="flex items-center justify-center gap-2">
               <Calendar className="w-4 h-4" />
@@ -522,6 +527,22 @@ const Profile = () => {
             <RecommendationsWidget />
           </motion.div>
         </div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="flex justify-center mt-8"
+        >
+          <button
+          onClick={logout}
+            className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white font-medium 
+                     hover:from-blue-600 hover:to-purple-700 transition-all duration-300 
+                     hover:shadow-lg hover:shadow-blue-500/30 transform hover:-translate-y-1"
+          >
+            Logout
+          </button>
+        </motion.div>
       </motion.div>
     </div>
   );

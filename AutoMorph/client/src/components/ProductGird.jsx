@@ -20,19 +20,19 @@ const ProductGrid = ({ searchQuery, category }) => {
             </h2>
             <p className="text-gray-600">{filteredProducts.length} products</p>
           </div>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {filteredProducts.map((product) => (
-              <Link 
-                to={`/product/${product.id}`} 
-                className="group transition-transform duration-200 hover:scale-105" 
+              <Link
+                to={`/product/${product.id}`}
+                className="group transition-transform duration-200 hover:scale-105"
                 key={product.id}
               >
                 <div className="shadow-lg rounded-md overflow-hidden cursor-pointer bg-white">
                   <div className="h-48 overflow-hidden">
-                    <img 
-                      src={product.image} 
-                      alt={product.title} 
+                    <img
+                      src={product.image}
+                      alt={product.title}
                       className="w-full h-full object-fill group-hover:scale-110 transition duration-300"
                     />
                   </div>

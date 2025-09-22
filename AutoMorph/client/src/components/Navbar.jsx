@@ -102,9 +102,9 @@ const Navbar = () => {
 
           {isAuthenticated ? (
             <div className="flex gap-3 justify-center items-center">
-             <button onClick={logout} className="relative cursor-pointer px-5 py-2 sm:px-6 sm:py-2 rounded-xl font-bold group overflow-hidden shadow-md shadow-[#26C6FF]/10 border border-[#23263a] bg-gradient-to-r from-[#1C1F2A] to-[#23263a] hover:from-[#23263a] hover:to-[#1C1F2A] transition-all duration-300">
+             <button  className="relative cursor-pointer px-5 py-2 sm:px-6 sm:py-2 rounded-xl font-bold group overflow-hidden shadow-md shadow-[#26C6FF]/10 border border-[#23263a] bg-gradient-to-r from-[#1C1F2A] to-[#23263a] hover:from-[#23263a] hover:to-[#1C1F2A] transition-all duration-300">
                 <Link to={"/profile"} className="relative z-10 text-white group-hover:text-[#26C6FF] transition-colors duration-300 text-sm sm:text-base">
-                  Mayank
+                 {user.name.split(' ')[0]}
                 </Link>
 
 
@@ -124,7 +124,7 @@ const Navbar = () => {
                 ></span>
               </button>
 
-              <button onClick={logout} className="relative cursor-pointer px-5 py-2 sm:px-6 sm:py-2 rounded-xl font-bold group overflow-hidden shadow-md shadow-[#26C6FF]/10 border border-[#23263a] bg-gradient-to-r from-[#1C1F2A] to-[#23263a] hover:from-[#23263a] hover:to-[#1C1F2A] transition-all duration-300">
+              {/* <button onClick={logout} className="relative cursor-pointer px-5 py-2 sm:px-6 sm:py-2 rounded-xl font-bold group overflow-hidden shadow-md shadow-[#26C6FF]/10 border border-[#23263a] bg-gradient-to-r from-[#1C1F2A] to-[#23263a] hover:from-[#23263a] hover:to-[#1C1F2A] transition-all duration-300">
                 <span className="relative z-10 text-white group-hover:text-[#26C6FF] transition-colors duration-300 text-sm sm:text-base">
                   Log out
                 </span>
@@ -144,7 +144,7 @@ const Navbar = () => {
                     animation: 'pulse 2s infinite',
                   }}
                 ></span>
-              </button>
+              </button> */}
             </div>
           )
 

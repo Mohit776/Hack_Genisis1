@@ -485,10 +485,9 @@ export default function HomePage() {
                       <div className="w-24 h-24 mx-auto mb-4 border-2 border-dashed border-gray-600 rounded-lg flex items-center justify-center">
                         <Car className="w-12 h-12 text-gray-600" />
                       </div>
-                      <p className="text-gray-500">Classify car first to enable 3D generation</p>
+                      <p className="text-3xl text-gray-500">Coming Soon</p>
                     </div>
                   )}
-
                   {/* Scanning Animation */}
                   {(isGenerating || isPredicting) && (
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/20 to-transparent animate-scan"></div>

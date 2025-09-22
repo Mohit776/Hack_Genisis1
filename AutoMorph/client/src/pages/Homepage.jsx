@@ -9,8 +9,11 @@ import Footer from '../components/Footer.jsx';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SosButton from "../components/sosButton.jsx"
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Homepage = () => {
+
+     const { user, isAuthenticated, isLoading } = useAuth0();
     return (
         <>
             <div className='bg-black pt-12 text-white w-full min-h-screen flex flex-col items-center justify-start relative overflow-x-hidden'>
@@ -32,6 +35,15 @@ const Homepage = () => {
                 <div className='w-full min-h-screen flex flex-col lg:flex-row justify-between px-4 sm:px-6 md:px-8 lg:px-10 xl:px-20 py-10 md:py-16 relative z-10 mt-0 lg:mt-6'>
                     {/* Left Content */}
                     <div className='flex flex-col justify-center w-full lg:w-1/2 h-full lg:pl-8 xl:pl-16 pr-0 lg:pr-10 order-2 lg:order-1 text-center lg:text-left'>
+
+                    {isAuthenticated && (
+                      <div className="flex items-center gap-4 mb-6">
+                     
+                        <span className="text-6xl font-bold bg-gradient-to-r from-[#26C6FF] via-[#A0006D] to-[#FF6B6B] bg-clip-text text-transparent">
+                          Hi, {user.name.split(' ')[0]}
+                        </span>
+                      </div>
+                    )}
                         <div className='mb-6 md:mb-8'>
                             <h1 className='text-4xl sm:text-5xl md:text-6xl font-bold mb-3 md:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600'>
                                 Welcome to AutoMorph
@@ -49,18 +61,20 @@ const Homepage = () => {
                                     Get Started
                                 </Link>
                             </button>
-                            <button className='px-6 py-3 sm:px-8 sm:py-3 border-2 border-gray-400 rounded-full text-white font-medium hover:bg-white/10 transition-all duration-300 hover:border-white group'>
+                            <a href='/educationhub' className='px-6 py-3 sm:px-8 sm:py-3 border-2 border-gray-400 rounded-full text-white font-medium hover:bg-white/10 transition-all duration-300 hover:border-white group'>
                                 <span className='group-hover:bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400'>
                                     Watch Demo
                                 </span>
-                            </button>
+                            </a>
                            <SosButton/>
                         </div>
-                        <div className='mt-8 md:mt-12 flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4'>
+                        <div className=' mt-8 md:mt-12 flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4'>
                             <div className='flex -space-x-2'>
-                                {[1, 2, 3].map((item) => (
-                                    <div key={item} className='w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-blue-400 to-purple-600 border-2 border-gray-800'></div>
-                                ))}
+                               
+                                    <img src='\public\background\f1.jpg' className=' phto w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-blue-400 to-purple-600 border-2 border-gray-800'></img>
+                                    <img src='\public\background\f2.jpg' className=' phto w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-blue-400 to-purple-600 border-2 border-gray-800'></img>
+                                    <img src='\public\background\f3.jpg' className=' phto w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-blue-400 to-purple-600 border-2 border-gray-800'></img>
+                            
                             </div>
                             <p className='text-sm text-gray-400'>
                                 Join <span className='text-white'>10,000+</span> car enthusiasts transforming their rides
