@@ -203,7 +203,7 @@ const EducationHub = () => {
             <section className="relative min-h-[80vh] flex items-center overflow-hidden">
                 <div className="absolute inset-0">
                     <img
-                        src="/background/bg.png"
+                        src="/public/background/bg.png"
                         alt="Automotive technology background"
                         className="w-full h-full opacity-30 object-cover"
                     />

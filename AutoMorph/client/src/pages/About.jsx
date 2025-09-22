@@ -80,7 +80,7 @@ const About = () => {
             title: "CEO & Founder",
             handle: "mayankmittal1311",
             status: "Online",
-            avatarUrl: "/public/background/",
+            avatarUrl: "/public/background/mayank.jpeg",
             // expertise: "AI & Automotive Tech"
             expertise: "Everything"
         },
@@ -104,7 +104,7 @@ const About = () => {
             name: "Raghav Bhardwaj",
             title: "Product Manager",
             handle: "raghavbhardwaj",
-            status: "Away",
+            status: "Online",
             avatarUrl: "/public/background/Raghav.jpg",
             expertise: "Automotive Industry"
         }

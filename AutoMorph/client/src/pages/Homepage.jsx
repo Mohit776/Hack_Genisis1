@@ -50,7 +50,7 @@ const Homepage = () => {
                             </h1>
                             <div className='w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mx-auto lg:mx-0'></div>
                         </div>
-                        <div className='my-4 md:my-6 w-full lg:w-4/5 mx-auto lg:mx-0'>
+                        <div className='mb-4 md:mb-6 w-full lg:w-4/5 mx-auto lg:mx-0'>
                             <p className='text-base sm:text-lg text-gray-300 leading-relaxed'>
                                 Transform your vehicle with <span className='font-semibold text-white'>intelligent upgrade recommendations</span>. Upload your car's photo and discover <span className='font-semibold text-white'>personalized enhancements</span> powered by cutting-edge AI technology.
                             </p>
@@ -62,8 +62,8 @@ const Homepage = () => {
                                 </Link>
                             </button>
                             <a href='/educationhub' className='px-6 py-3 sm:px-8 sm:py-3 border-2 border-gray-400 rounded-full text-white font-medium hover:bg-white/10 transition-all duration-300 hover:border-white group'>
-                                <span className='group-hover:bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400'>
-                                    Watch Demo
+                                <span className='text-lg group-hover:bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400'>
+                                    Learn More
                                 </span>
                             </a>
                            <SosButton/>

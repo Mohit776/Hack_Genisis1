@@ -111,21 +111,21 @@ const Chatbot = () => {
     };
 
     // Optional: Speak bot messages (remove if not needed)
-    const textToSpeech = (text) => {
-        if (!window.speechSynthesis) return;
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'en-US';
-        window.speechSynthesis.speak(utterance);
-    };
+    // const textToSpeech = (text) => {
+    //     if (!window.speechSynthesis) return;
+    //     const utterance = new SpeechSynthesisUtterance(text);
+    //     utterance.lang = 'en-US';
+    //     window.speechSynthesis.speak(utterance);
+    // };
 
-    useEffect(() => {
-        if (messages.length > 0) {
-            const lastMessage = messages[messages.length - 1];
-            if (lastMessage.role === 'bot') {
-                textToSpeech(lastMessage.content);
-            }
-        }
-    }, [messages]);
+    // useEffect(() => {
+    //     if (messages.length > 0) {
+    //         const lastMessage = messages[messages.length - 1];
+    //         if (lastMessage.role === 'bot') {
+    //             textToSpeech(lastMessage.content);
+    //         }
+    //     }
+    // }, [messages]);
 
     return (
         <>

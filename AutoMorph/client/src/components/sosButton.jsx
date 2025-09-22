@@ -41,7 +41,8 @@ const SosButton = () => {
       const lon = position.coords.longitude.toFixed(6);
 
       // Reverse geocode (optional): get address
-      let location = `Lat: ${lat}, Lon: ${lon}`;
+      let location =` Lat: ${lat}, Lon: ${lon}`;
+      alert("Sending SOS ... ")
       try {
         const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`);
         const data = await res.json();
@@ -77,7 +78,7 @@ const SosButton = () => {
   return (
     <div>
       <button onClick={sendSOS} style={{
-        padding: '15px 30px',
+        padding: '15px 40px',
         fontSize: '18px',
         fontWeight: 'bold',
         color: 'white',
@@ -87,7 +88,7 @@ const SosButton = () => {
         cursor: 'pointer',
         boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
         transition: 'all 0.3s ease'
-      }}>Send SOS Email</button>
+      }}>Send SOS </button>
     </div>
   );
 }
